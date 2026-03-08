@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gayathri Naranath — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a1a;
+      --paper: #f7f4ef;
+      --warm: #c9b99a;
+      --accent: #b85c38;
+      --muted: #7a7065;
+      --card: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(247,244,239,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,185,154,0.3);
+    }
+    .nav-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.01em;
+    }
+    .nav-links { display: flex; gap: 2.5rem; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 7rem 3rem 4rem;
+      gap: 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .hero-text {}
+    .hero-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.1s forwards;
+    }
+    .hero-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.2s forwards;
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.35s forwards;
+    }
+    .hero-links {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.5s forwards;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.65rem 1.5rem;
+      border-radius: 2px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--ink);
+      color: var(--paper);
+    }
+    .btn-primary:hover { background: var(--accent); }
+    .btn-outline {
+      background: transparent;
+      color: var(--ink);
+      border: 1.5px solid var(--warm);
+    }
+    .btn-outline:hover { border-color: var(--ink); }
+
+    .hero-visual {
+      display: flex; justify-content: center; align-items: center;
+      opacity: 0;
+      animation: fadeIn 1s 0.4s forwards;
+    }
+    .hero-shape {
+      width: 380px; height: 380px;
+      border-radius: 60% 40% 55% 45% / 50% 55% 45% 50%;
+      background: linear-gradient(135deg, #e8dfd4 0%, #d4c5b0 50%, #c9b99a 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      animation: morph 8s ease-in-out infinite;
+    }
+    .hero-shape::after {
+      content: '';
+      position: absolute;
+      inset: 20px;
+      border-radius: inherit;
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+    .hero-initials {
+      font-family: 'DM Serif Display', serif;
+      font-size: 5rem;
+      color: rgba(26,26,26,0.25);
+      letter-spacing: -0.02em;
+      user-select: none;
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 6rem 3rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      margin-bottom: 3rem;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--card); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 1rem; }
+    .about-details { border-left: 2px solid var(--warm); padding-left: 2rem; }
+    .detail-item { margin-bottom: 1.5rem; }
+    .detail-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 0.2rem;
+    }
+    .detail-value { font-size: 0.95rem; color: var(--ink); font-weight: 400; }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--paper); }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-card {
+      background: var(--card);
+      border: 1px solid rgba(201,185,154,0.3);
+      padding: 1.8rem;
+      border-radius: 4px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .skill-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.06); }
+    .skill-card-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 2px;
+      background: var(--paper);
+      color: var(--muted);
+      border: 1px solid var(--warm);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--card); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    .project-card {
+      border: 1px solid rgba(201,185,154,0.3);
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--paper);
+      transition: transform 0.25s, box-shadow 0.25s;
+      display: flex; flex-direction: column;
+    }
+    .project-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+    .project-img {
+      width: 100%; height: 200px;
+      object-fit: cover;
+      display: block;
+      background: linear-gradient(135deg, #e0d5c8, #c9b99a);
+    }
+    .project-img-placeholder {
+      width: 100%; height: 200px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+      background: linear-gradient(135deg, #e0d5c8, #c9b99a);
+    }
+    .project-body { padding: 1.6rem; flex: 1; display: flex; flex-direction: column; }
+    .project-meta {
+      display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.8rem;
+    }
+    .project-tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(184,92,56,0.08);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+    }
+    .project-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.6rem;
+      line-height: 1.2;
+    }
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      flex: 1;
+      margin-bottom: 1.2rem;
+    }
+    .project-link {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--accent);
+      border-bottom: 1px solid rgba(184,92,56,0.3);
+      padding-bottom: 1px;
+      align-self: flex-start;
+      transition: border-color 0.2s;
+    }
+    .project-link:hover { border-color: var(--accent); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: rgba(247,244,239,0.6);
+      padding: 3rem;
+      text-align: center;
+    }
+    footer .footer-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      color: var(--paper);
+      margin-bottom: 1rem;
+    }
+    footer a { color: var(--warm); text-decoration: none; }
+    footer a:hover { color: var(--paper); }
+    .footer-links { display: flex; gap: 2rem; justify-content: center; margin-bottom: 1.5rem; }
+    .footer-copy { font-size: 0.8rem; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+    @keyframes morph {
+      0%,100% { border-radius: 60% 40% 55% 45% / 50% 55% 45% 50%; }
+      33%      { border-radius: 45% 55% 40% 60% / 55% 45% 55% 45%; }
+      66%      { border-radius: 55% 45% 60% 40% / 45% 55% 45% 55%; }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; gap: 3rem; }
+      .hero-visual { order: -1; }
+      .hero-shape { width: 240px; height: 240px; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      section { padding: 4rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-name">Gayathri Naranath</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-text">
+      <div class="hero-label">Media Technology · LiU &amp; Waseda</div>
+      <h1 class="hero-name">Gayathri<br /><em>Naranath</em></h1>
+      <p class="hero-desc">
+        Developer and creative technologist with a passion for building things that sit at the intersection of engineering and design. Currently completing my master's thesis on real-time AI translation.
+      </p>
+      <div class="hero-links">
+        <a class="btn btn-primary" href="https://github.com/ggaaaga?tab=repositories" target="_blank" rel="noopener">
+          GitHub
+        </a>
+        <a class="btn btn-outline" href="https://linkedin.com" target="_blank" rel="noopener">
+          LinkedIn
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-shape">
+        <span class="hero-initials">GN</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="section-label">Who I am</div>
+      <h2 class="section-title reveal">About Me</h2>
+      <div class="about-grid reveal">
+        <div class="about-text">
+          <p>
+            I'm a Media Technology student at Linköping University (LiU), currently wrapping up my degree with a thesis on real-time translation using AI. My programme blends engineering rigour with creative media — which means I'm equally at home writing code and thinking about user experience and visual design.
+          </p>
+          <p>
+            I spent part of my studies on exchange at Waseda University in Tokyo, where I built interactive 3D web experiences and deepened my love for creative coding. I'm described by my peers as curious, inventive, and someone who gravitates toward unconventional solutions.
+          </p>
+          <p>
+            I learn fast, I enjoy learning, and I genuinely think that's my strongest skill — I can pick up a new framework, tool, or domain and get productive quickly.
+          </p>
+        </div>
+        <div class="about-details">
+          <div class="detail-item">
+            <div class="detail-label">Education</div>
+            <div class="detail-value">Media Technology (5-year), LiU</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Exchange</div>
+            <div class="detail-value">Waseda University, Tokyo</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Current Focus</div>
+            <div class="detail-value">Thesis — Real-time AI Translation</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Languages</div>
+            <div class="detail-value">Swedish · English</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Contact</div>
+            <div class="detail-value"><a href="mailto:gayathrinaranath9@gmail.com" style="color:var(--accent);text-decoration:none">gayathrinaranath9@gmail.com</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-inner">
+      <div class="section-label">What I know</div>
+      <h2 class="section-title reveal">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card reveal">
+          <div class="skill-card-title">Frontend & Web</div>
+          <div class="skill-tags">
+            <span class="tag">JavaScript</span>
+            <span class="tag">Three.js</span>
+            <span class="tag">React</span>
+            <span class="tag">HTML/CSS</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="skill-card-title">3D & Graphics</div>
+          <div class="skill-tags">
+            <span class="tag">Blender</span>
+            <span class="tag">WebGL</span>
+            <span class="tag">Scientific Visualization</span>
+            <span class="tag">Volume Rendering</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="skill-card-title">Programming</div>
+          <div class="skill-tags">
+            <span class="tag">Java</span>
+            <span class="tag">Python</span>
+            <span class="tag">C++</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="skill-card-title">Media & Design</div>
+          <div class="skill-tags">
+            <span class="tag">Node-based Materials</span>
+            <span class="tag">Rendering & Compositing</span>
+            <span class="tag">UI/UX Thinking</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="skill-card-title">AI & Research</div>
+          <div class="skill-tags">
+            <span class="tag">Real-time AI Translation</span>
+            <span class="tag">NLP (thesis)</span>
+            <span class="tag">Data Processing</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="skill-card-title">Soft Skills</div>
+          <div class="skill-tags">
+            <span class="tag">Fast Learner</span>
+            <span class="tag">Creative Problem Solving</span>
+            <span class="tag">Teamwork</span>
+            <span class="tag">Independent Work</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-inner">
+      <div class="section-label">What I've built</div>
+      <h2 class="section-title reveal">Projects</h2>
+      <div class="projects-grid">
+
+        <!-- Project 1: Scivis -->
+        <div class="project-card reveal">
+          <div class="project-img-placeholder">🐷</div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-tag">Scientific Visualization</span>
+              <span class="project-tag">C++</span>
+            </div>
+            <h3 class="project-title">Volume Rendering — Piggy Bank</h3>
+            <p class="project-desc">
+              Developed interactive transfer functions to visualize the interior of a piggy bank using volumetric rendering techniques. Built custom controls for opacity, colour mapping, and compositing methods (front-to-back, first hit-point, MIP) to reveal hidden 3D structures.
+            </p>
+            <a href="https://github.com/ggaaaga/tnm093" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+          </div>
+        </div>
+
+        <!-- Project 2: 3D Art Museum -->
+        <div class="project-card reveal">
+          <div class="project-img-placeholder">🏛️</div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-tag">3D Graphics</span>
+              <span class="project-tag">Blender</span>
+            </div>
+            <h3 class="project-title">3D Art Museum</h3>
+            <p class="project-desc">
+              Designed and rendered a complete virtual art museum in Blender, including hand-sculpted statues. Applied professional techniques such as decimation for optimised rendering performance and node-based procedural materials (marble, stone) for photorealistic surfaces.
+            </p>
+          </div>
+        </div>
+
+        <!-- Project 3: Tiny Island -->
+        <div class="project-card reveal">
+          <div class="project-img-placeholder">🏝️</div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-tag">Three.js</span>
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">Waseda</span>
+            </div>
+            <h3 class="project-title">Tiny Island — Interactive 3D Web</h3>
+            <p class="project-desc">
+              Created an interactive 3D island scene in the browser using Three.js during my exchange semester at Waseda University, Tokyo. Demonstrates real-time 3D rendering, scene management, and interactive camera controls — all in vanilla JavaScript.
+            </p>
+            <a href="https://github.com/ggaaaga" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-name">Gayathri Naranath</div>
+    <div class="footer-links">
+      <a href="https://github.com/ggaaaga?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:gayathrinaranath9@gmail.com">Email</a>
+    </div>
+    <div class="footer-copy">Media Technology · Linköping University</div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
