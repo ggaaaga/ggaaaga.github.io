@@ -11,7 +11,7 @@
     :root {
       --ink: #1a1a1a;
       --paper: #f7f4ef;
-      --warm: #c9b99a;
+      --warm: #62450a;
       --accent: #b85c38;
       --muted: #7a7065;
       --card: #ffffff;
@@ -129,27 +129,31 @@
       animation: fadeIn 1s 0.4s forwards;
     }
     .hero-shape {
-      width: 380px; height: 380px;
-      border-radius: 60% 40% 55% 45% / 50% 55% 45% 50%;
-      background: linear-gradient(135deg, #e8dfd4 0%, #d4c5b0 50%, #c9b99a 100%);
-      display: flex; align-items: center; justify-content: center;
-      position: relative;
-      animation: morph 8s ease-in-out infinite;
-    }
-    .hero-shape::after {
-      content: '';
-      position: absolute;
-      inset: 20px;
-      border-radius: inherit;
-      border: 1px solid rgba(255,255,255,0.6);
-    }
-    .hero-initials {
-      font-family: 'DM Serif Display', serif;
-      font-size: 5rem;
-      color: rgba(26,26,26,0.25);
-      letter-spacing: -0.02em;
-      user-select: none;
-    }
+    width: 380px; height: 380px;
+    border-radius: 60% 40% 55% 45% / 50% 55% 45% 50%;
+    background: linear-gradient(135deg, #e8dfd4 0%, #d4c5b0 50%, #c9b99a 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    animation: morph 8s ease-in-out infinite;
+    padding: 6px;
+    box-shadow: 0 0 0 3px var(--warm), 0 20px 60px rgba(0,0,0,0.12);
+  }
+  .hero-shape::before {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    border-radius: inherit;
+    border: 1.5px solid rgba(201,185,154,0.5);
+    animation: morph 8s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .hero-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+    display: block;
+  }
 
     /* ── SECTION SHARED ── */
     section { padding: 6rem 3rem; }
@@ -354,10 +358,9 @@
   <!-- HERO -->
   <div class="hero">
     <div class="hero-text">
-      <div class="hero-label">Media Technology · LiU &amp; Waseda</div>
       <h1 class="hero-name">Gayathri<br /><em>Naranath</em></h1>
       <p class="hero-desc">
-        Developer and creative technologist with a passion for building things that sit at the intersection of engineering and design. Currently completing my master's thesis on real-time AI translation.
+        (Almost) newly graduated engineer looking to put five years of curiosity and skills to work!
       </p>
       <div class="hero-links">
         <a class="btn btn-primary" href="https://github.com/ggaaaga?tab=repositories" target="_blank" rel="noopener">
@@ -370,7 +373,7 @@
     </div>
     <div class="hero-visual">
       <div class="hero-shape">
-        <span class="hero-initials">GN</span>
+        <img class="hero-photo" src="me.jpeg" alt="Gayathri Naranath" />
       </div>
     </div>
   </div>
@@ -378,36 +381,35 @@
   <!-- ABOUT -->
   <section id="about">
     <div class="section-inner">
-      <div class="section-label">Who I am</div>
       <h2 class="section-title reveal">About Me</h2>
       <div class="about-grid reveal">
         <div class="about-text">
           <p>
-            I'm a Media Technology student at Linköping University (LiU), currently wrapping up my degree with a thesis on real-time translation using AI. My programme blends engineering rigour with creative media — which means I'm equally at home writing code and thinking about user experience and visual design.
+            I'm a final year Media Technology student at Linköping University, currently wrapping up my degree with a thesis on real-time translation using AI. My education focuses on the techniques behind modern digital media, such as 3D graphics and interactive web technologies, as well as traditional engineering.
           </p>
           <p>
-            I spent part of my studies on exchange at Waseda University in Tokyo, where I built interactive 3D web experiences and deepened my love for creative coding. I'm described by my peers as curious, inventive, and someone who gravitates toward unconventional solutions.
+            I spent part of my studies on exchange at Waseda University in Tokyo, where I focused on 3D computer graphics and general data technology. I'm described by my peers as curious, inventive, and someone who gravitates toward unconventional solutions.
           </p>
           <p>
-            I learn fast, I enjoy learning, and I genuinely think that's my strongest skill — I can pick up a new framework, tool, or domain and get productive quickly.
+            I learn fast, I enjoy learning, and I am certain that's my strongest skill; I can pick up any new framework, tool, or domain and get productive quickly. I'm looking for opportunities to apply my skills in a creative and impactful way.
           </p>
         </div>
         <div class="about-details">
           <div class="detail-item">
-            <div class="detail-label">Education</div>
-            <div class="detail-value">Media Technology (5-year), LiU</div>
+            <div class="detail-label">Studies</div>
+            <div class="detail-value">Master of Science in Media Technology, AI and Engineering, Linköping University</div>
           </div>
           <div class="detail-item">
-            <div class="detail-label">Exchange</div>
-            <div class="detail-value">Waseda University, Tokyo</div>
+            <div class="detail-label">Exchange Studies</div>
+            <div class="detail-value">Waseda University, Tokyo, Japan (all A+)</div>
           </div>
           <div class="detail-item">
             <div class="detail-label">Current Focus</div>
-            <div class="detail-value">Thesis — Real-time AI Translation</div>
+            <div class="detail-value">Master Thesis in Real-time AI Translation Architectures for Video Calls at <a style= "color:rgb(84, 57, 25)", href="https://www.xmreality.com/">XMReality</a></div>
           </div>
           <div class="detail-item">
             <div class="detail-label">Languages</div>
-            <div class="detail-value">Swedish · English</div>
+            <div class="detail-value">Swedish · English · Hindi · Malayalam</div>
           </div>
           <div class="detail-item">
             <div class="detail-label">Contact</div>
@@ -425,47 +427,41 @@
       <h2 class="section-title reveal">Skills</h2>
       <div class="skills-grid">
         <div class="skill-card reveal">
-          <div class="skill-card-title">Frontend & Web</div>
+          <div class="skill-card-title">Graphics & Media</div>
           <div class="skill-tags">
-            <span class="tag">JavaScript</span>
-            <span class="tag">Three.js</span>
-            <span class="tag">React</span>
-            <span class="tag">HTML/CSS</span>
-          </div>
-        </div>
-        <div class="skill-card reveal">
-          <div class="skill-card-title">3D & Graphics</div>
-          <div class="skill-tags">
-            <span class="tag">Blender</span>
-            <span class="tag">WebGL</span>
             <span class="tag">Scientific Visualization</span>
-            <span class="tag">Volume Rendering</span>
+            <span class="tag">InfoVis</span>
+            <span class="tag">Computer Graphics (techniques & GL)</span>
+            <span class="tag">Scientific Visualization</span>
+            <span class="tag">Game Development</span>
+            <span class="tag">UX/UI</span>
+            <span class="tag">Image Processing</span>
           </div>
         </div>
         <div class="skill-card reveal">
           <div class="skill-card-title">Programming</div>
           <div class="skill-tags">
             <span class="tag">Java</span>
+            <span class="tag">JavaScript + frameworks (D3, Three.js, React) </span>
             <span class="tag">Python</span>
             <span class="tag">C++</span>
+            <span class="tag">C#</span>
+            <span class="tag">Object-oriented Programming (OOP)</span>
+            <span class="tag">Data Structures & Algorithms</span>
+            <span class="tag">HTML/CSS</span>
           </div>
         </div>
         <div class="skill-card reveal">
-          <div class="skill-card-title">Media & Design</div>
+          <div class="skill-card-title">AI & ML</div>
           <div class="skill-tags">
-            <span class="tag">Node-based Materials</span>
-            <span class="tag">Rendering & Compositing</span>
-            <span class="tag">UI/UX Thinking</span>
+            <span class="tag">Neural Machine Translation SOTA (thesis)</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">Keras/Tensorflow</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">Linear Algebra, Statistics</span>
           </div>
         </div>
-        <div class="skill-card reveal">
-          <div class="skill-card-title">AI & Research</div>
-          <div class="skill-tags">
-            <span class="tag">Real-time AI Translation</span>
-            <span class="tag">NLP (thesis)</span>
-            <span class="tag">Data Processing</span>
-          </div>
-        </div>
+        
         <div class="skill-card reveal">
           <div class="skill-card-title">Soft Skills</div>
           <div class="skill-tags">
@@ -475,6 +471,8 @@
             <span class="tag">Independent Work</span>
           </div>
         </div>
+
+
       </div>
     </div>
   </section>
@@ -482,29 +480,75 @@
   <!-- PROJECTS -->
   <section id="projects">
     <div class="section-inner">
-      <div class="section-label">What I've built</div>
+      <div class="section-label">What I've Done</div>
       <h2 class="section-title reveal">Projects</h2>
       <div class="projects-grid">
 
-        <!-- Project 1: Scivis -->
         <div class="project-card reveal">
-          <div class="project-img-placeholder">🐷</div>
+          <img src="ec.png">
           <div class="project-body">
             <div class="project-meta">
-              <span class="project-tag">Scientific Visualization</span>
-              <span class="project-tag">C++</span>
+              <span class="project-tag">Unity</span>
+              <span class="project-tag">C#</span>
             </div>
-            <h3 class="project-title">Volume Rendering — Piggy Bank</h3>
+            <h3 class="project-title">Elemental Clash</h3>
             <p class="project-desc">
-              Developed interactive transfer functions to visualize the interior of a piggy bank using volumetric rendering techniques. Built custom controls for opacity, colour mapping, and compositing methods (front-to-back, first hit-point, MIP) to reveal hidden 3D structures.
+              A card game developed for my bachelor thesis which uses physical cards with ArUco markers placed on a digital screen to interact with the game. We implemented a card recognition system using OpenCV to track the cards in real-time and trigger character spawns and other actions in Unity, resulting in a very engaging and unique gameplay! Click <a href="https://www.youtube.com/watch?v=-JwLrFs1Ud8&list=PPSV" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">here!</a> for a trailer showcasing the project.
             </p>
-            <a href="https://github.com/ggaaaga/tnm093" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
           </div>
         </div>
 
-        <!-- Project 2: 3D Art Museum -->
         <div class="project-card reveal">
-          <div class="project-img-placeholder">🏛️</div>
+          <img src="poke.png">
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-tag">Machine Learning</span>
+              <span class="project-tag">CNNs</span>
+              <span class="project-tag">Tensorflow</span>
+              <span class="project-tag">Model Tuning</span>
+            </div>
+            <h3 class="project-title">Pokémon Painter</h3>
+            <p class="project-desc">
+              A convolutional autoencoder in Tensorflow using Keras trained to reconstruct images of Pokémon sprites. I experimented with various architectures, hyperparameters, and data augmentation techniques. The project involved image preprocessing, model training, and evaluation, a comprehensive exercise in deep learning and computer vision techniques.
+            </p>
+            <a href="https://github.com/ggaaaga/tnm112/tree/main" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <img src="piggy.png">
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-tag">Scientific Visualization</span>
+              <span class="project-tag">Three.js<span>
+            </div>
+            <h3 class="project-title">Volume Rendering Piggy Bank</h3>
+            <p class="project-desc">
+              Developed interactive transfer functions to visualize the interior of a piggy bank using volumetric rendering techniques. Built custom controls for opacity, colour mapping, and compositing methods (front-to-back, first hit-point, MIP) to reveal hidden 3D structures.
+            </p>
+            <a href="https://github.com/ggaaaga/TNM093/tree/main/SciVis" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <img src="1.png">
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-tag">React</span>
+              <span class="project-tag">UX/UI<span>
+            </div>
+            <h3 class="project-title">Plant App</h3>
+            <p class="project-desc">
+              An app that helps its users take care of their plants with watering reminders and care instructions. Built with React for the frontend and a Node.js backend, this course project is focused on learning about UX/UI.
+            </p>
+          </div>
+        </div>
+
+
+
+        <!-- Project 2: 3D Art Museum
+        <div class="project-card reveal">
+          <img src="museum.png">
           <div class="project-body">
             <div class="project-meta">
               <span class="project-tag">3D Graphics</span>
@@ -515,22 +559,22 @@
               Designed and rendered a complete virtual art museum in Blender, including hand-sculpted statues. Applied professional techniques such as decimation for optimised rendering performance and node-based procedural materials (marble, stone) for photorealistic surfaces.
             </p>
           </div>
-        </div>
+        </div> -->
 
         <!-- Project 3: Tiny Island -->
         <div class="project-card reveal">
-          <div class="project-img-placeholder">🏝️</div>
+          <img src="tinyisland.png">
           <div class="project-body">
             <div class="project-meta">
               <span class="project-tag">Three.js</span>
               <span class="project-tag">JavaScript</span>
-              <span class="project-tag">Waseda</span>
+              <span class="project-tag">Blender</span>
             </div>
-            <h3 class="project-title">Tiny Island — Interactive 3D Web</h3>
+            <h3 class="project-title">Tiny Island, An Interactive 3D Web Visual</h3>
             <p class="project-desc">
-              Created an interactive 3D island scene in the browser using Three.js during my exchange semester at Waseda University, Tokyo. Demonstrates real-time 3D rendering, scene management, and interactive camera controls — all in vanilla JavaScript.
+              An interactive 3D island scene in the browser using Three.js. Uses real-time 3D rendering with interactive camera controls and a custom Phong shader.
             </p>
-            <a href="https://github.com/ggaaaga" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+            <a href="https://github.com/ggaaaga/ACGProject" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
           </div>
         </div>
 
@@ -540,12 +584,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-name">Gayathri Naranath</div>
-    <div class="footer-links">
-      <a href="https://github.com/ggaaaga?tab=repositories" target="_blank" rel="noopener">GitHub</a>
-      <a href="mailto:gayathrinaranath9@gmail.com">Email</a>
     </div>
-    <div class="footer-copy">Media Technology · Linköping University</div>
   </footer>
 
   <script>
