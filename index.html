@@ -112,12 +112,12 @@
       border: none;
     }
     .btn-primary {
-      background: var(--ink);
+      background: var(--warm);
       color: var(--paper);
     }
     .btn-primary:hover { background: var(--accent); }
     .btn-outline {
-      background: transparent;
+
       color: var(--ink);
       border: 1.5px solid var(--warm);
     }
@@ -300,12 +300,29 @@
       font-family: 'DM Serif Display', serif;
       font-size: 1.5rem;
       color: var(--paper);
-      margin-bottom: 1rem;
+      margin-bottom: 1.4rem;
     }
-    footer a { color: var(--warm); text-decoration: none; }
-    footer a:hover { color: var(--paper); }
-    .footer-links { display: flex; gap: 2rem; justify-content: center; margin-bottom: 1.5rem; }
-    .footer-copy { font-size: 0.8rem; }
+    footer a {
+      color: rgba(247,244,239,0.7);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(247,244,239,0.2);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    footer a:hover {
+      color: var(--paper);
+      border-color: rgba(247,244,239,0.6);
+    }
+    .footer-links {
+      display: flex;
+      gap: 2.5rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .footer-copy { font-size: 0.78rem; opacity: 0.45; letter-spacing: 0.05em; }
 
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
@@ -362,11 +379,18 @@
       <p class="hero-desc">
         (Almost) newly graduated engineer looking to put five years of curiosity and skills to work!
       </p>
-      
+      <div class="hero-links">
+        <a class="btn btn-primary" href="https://github.com/ggaaaga?tab=repositories" target="_blank" rel="noopener">
+          GitHub
+        </a>
+        <a class="btn btn-outline" href="https://linkedin.com" target="_blank" rel="noopener">
+          LinkedIn
+        </a>
+      </div>
     </div>
     <div class="hero-visual">
       <div class="hero-shape">
-        <img class="hero-photo" src="me.png" alt="Gayathri Naranath" />
+        <img class="hero-photo" src="me.jpeg" alt="Gayathri Naranath" />
       </div>
     </div>
   </div>
@@ -378,7 +402,7 @@
       <div class="about-grid reveal">
         <div class="about-text">
           <p>
-            I'm a final year Media Technology student at Linköping University, currently wrapping up my degree with a thesis on real-time translation in web-based video calls using AI on consumer-grade hardware. My education focuses on the techniques behind modern digital media, such as 3D graphics and interactive web technologies, as well as traditional engineering.
+            I'm a final year Media Technology student at Linköping University, currently wrapping up my degree with a thesis on real-time translation using AI. My education focuses on the techniques behind modern digital media, such as 3D graphics and interactive web technologies, as well as traditional engineering.
           </p>
           <p>
             I spent part of my studies on exchange at Waseda University in Tokyo, where I focused on 3D computer graphics and general data technology. I'm described by my peers as curious, inventive, and someone who gravitates toward unconventional solutions.
@@ -404,9 +428,7 @@
             <div class="detail-label">Languages</div>
             <div class="detail-value">Swedish · English · Hindi · Malayalam</div>
           </div>
-          <div class="detail-item">
-            <div class="detail-label">Contact</div>
-            <div class="detail-value"><a href="mailto:gayathrinaranath9@gmail.com" style="color:var(--accent);text-decoration:none">gayathrinaranath9@gmail.com</a></div>
+     
           </div>
         </div>
       </div>
@@ -576,17 +598,15 @@
   </section>
 
   <!-- FOOTER -->
+   <!-- FOOTER -->
   <footer>
-    <div class="hero-links">
-        <a class="btn btn-primary" href="https://github.com/ggaaaga?tab=repositories" target="_blank" rel="noopener">
-          GitHub
-        </a>
-        <a class="btn btn-outline" href="https://linkedin.com" target="_blank" rel="noopener">
-          LinkedIn
-        </a>
-      </div>
+    <div class="footer-links">
+      <a href="https://github.com/ggaaaga?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:gayathrinaranath9@gmail.com">Email</a>
     </div>
   </footer>
+
 
   <script>
     // Scroll reveal
